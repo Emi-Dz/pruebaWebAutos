@@ -33,8 +33,6 @@ public class SvAutos extends HttpServlet {
         
         HttpSession ses = request.getSession();
         ses.setAttribute("lista",lista);
-        ses.setAttribute("auto1", lista.get(0));
-        ses.setAttribute ("auto2", lista.get(1));
         
         
         response.sendRedirect("mostrarAutos.jsp");

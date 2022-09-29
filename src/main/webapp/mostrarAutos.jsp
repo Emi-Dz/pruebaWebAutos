@@ -6,6 +6,8 @@
 
 
 
+<%@page import="java.util.List"%>
+<%@page import="entity.Auto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,20 +21,35 @@
         </br>
         <table class="table">
             <thead>
-                <tr>
-                    <th scope="col">Autos Guardados</th>
+
+                <tr>  
+                    <th scope="col">#</th>
+                    <th scope="col">Patente</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Tipo de Motor</th>
                 </tr>
+
             </thead>
             <tbody>
+
+                <%
+                    List<Auto> lista = (List) request.getSession().getAttribute("lista");
+                    int cont = 1;
+                    for (Auto a : lista) {%>
                 <tr>
-                    <th scope="row">1</th>
-                    <td><%= session.getAttribute("auto1")%></td>
-                </tr>  
-                <tr>
-                    <th scope="row">2</th>
-                    <td><%= session.getAttribute("auto2")%></td>
-                </tr> 
-                
+                    <th scope="row"><%=cont%></th>
+                    <td><%=a.getPatente()%></td>
+                    <td><%=a.getMarca()%></td>
+                    <td><%=a.getModelo()%></td>
+                    <td><%=a.getColor()%></td>
+                    <td><%=a.getTipoMotor()%></td>
+
+                    <% cont++;%>
+                </tr>
+                <%}%>
+
             </tbody>
         </table>
 
